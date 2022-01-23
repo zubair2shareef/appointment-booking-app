@@ -1,0 +1,38 @@
+*{
+    margin:0;
+
+
+}
+
+.container{
+    
+    display:flex;
+    flex-direction:column;
+
+    height:80vh;
+    width:80vw;
+    background-color: black;
+    
+    margin: 10vh;
+    margin-left: 10%;
+    background-image: url("https://img.lovepik.com/photo/40007/3176.jpg_wh860.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+label{
+    margin-left: 30%;
+}
+input{
+    margin-left: 30%;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    width:30%;
+   border: none;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(103, 104, 103, 0.757);
+}
