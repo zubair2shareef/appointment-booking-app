@@ -36,3 +36,12 @@ input{
     border-radius: 10px;
     box-shadow: 0 0 25px rgba(103, 104, 103, 0.757);
 }
+
+.user-DetailsShow{
+    width:200px;
+    height:auto;
+    border:2px solid;
+ 
+    
+   
+}
