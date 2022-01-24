@@ -14,13 +14,9 @@ form.addEventListener('submit', (e)=>{
 
     };
     console.log(userDetails);
-    localStorage.setItem('userData',JSON.stringify(userDetails));
+    localStorage.setItem(`userData${e.target.email.value}`,JSON.stringify(userDetails));
 
-    
-    // localStorage.setItem("userName",e.target.name.value);
-    // localStorage.setItem("userEmail",e.target.email.value);
-    // localStorage.setItem("userPhoneNo",JSON.stringify(e.target.phoneno.value.toString));
-    // localStorage.setItem("userDateTime",e.target.datetime.value);
+    showUserOnScreen(userDetails);
 
     
   
@@ -28,31 +24,25 @@ form.addEventListener('submit', (e)=>{
 
 
 
-// function onsignup(event) {
+function showUserOnScreen(obj){
+    let parent=document.querySelector('.showdetails')
+    const li=`${obj.userName} ,${obj.userEmail},${obj.userPhone} `
+    parent.innerHTML=parent.innerHTML+li
+}
 
-//     event.preventDefault();
 
-//     console.log(event.target.name.value)
-//     console.log(event.target.email.value)
-//     console.log(event.target.phoneno.value)
-//     console.log(event.target.datetime.value)
-
+document.addEventListener('DOMContentLoaded', function () {
+    let data=localStorage
     
+    Object.keys(localStorage).forEach((key) => {
+        
+        var user=JSON.parse(localStorage.getItem(key));
+        console.log(user)
+        showUserOnScreen(user)
+        
+    });
+   
+});
 
-// }
-
-let show=document.querySelector('.showdetails')
-
-show.classList.contains("Name").innerHTML="fsdf"
-let saaa=show.getElementsByTagName("li");
 
 
-//showing data on frontend
-
-
-var getData=JSON.parse(localStorage.getItem('userData'))
-
-saaa.Name.innerHTML=getData.userName
-saaa.Email.innerHTML=getData.userEmail
-saaa.Phoneno.innerHTML=getData.userPhoneno
-saaa.Date.innerHTML=getData.userDateTime
