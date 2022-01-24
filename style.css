@@ -38,9 +38,12 @@ input{
 }
 
 .user-DetailsShow{
+ 
     width:400px;
     height:auto;
     border:2px solid;
+    display: flex;
+    flex-direction:row
  
     
    
