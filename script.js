@@ -47,15 +47,28 @@ l.forEach((ee)=>{
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-    let data=localStorage
+
+    axios.get("https://crudcrud.com/api/ec1549399c53408885aafd820c6a3f10/appoitment")
+    .then(res=>{
+        console.log(res.data)
+        for(var i=0;i<res.data.length;i++){
+            showUserOnScreen(res.data[i]);
+            console.log(res.data)
+        }
+    })
+
+
+
+
+    // let data=localStorage
     
-    Object.keys(localStorage).forEach((key) => {
+    // Object.keys(localStorage).forEach((key) => {
         
-        var user=JSON.parse(localStorage.getItem(key));
-        console.log(user)
-        showUserOnScreen(user)
+    //     var user=JSON.parse(localStorage.getItem(key));
+    //     console.log(user)
+    //     showUserOnScreen(user)
         
-    });
+    // });
    
 });
 
