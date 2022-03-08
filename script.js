@@ -37,7 +37,7 @@ function showUserOnScreen(obj){
 
     const dell='<button class="delete">delete</button>'
     const edit='<button class="edit">edit</button>'
-    const li=`<li value="${obj.userEmail}">${obj.userName} ,${obj.userEmail},${obj.userPhone}${dell} ${edit}</li> `
+    const li=`<li value="${obj._id}">${obj.userName} ,${obj.userEmail},${obj.userPhone}${dell} ${edit}</li> `
   
     parent.innerHTML=parent.innerHTML+li
 }
@@ -84,9 +84,11 @@ function ondeleteAndEdit(e){
     e.preventDefault();
     if(e.target.classList.contains('delete')){
         id=e.target.parentElement.getAttribute("value")
-        localStorage.removeItem(id)
+        axios.delete(`https://crudcrud.com/api/ec1549399c53408885aafd820c6a3f10/appoitment/${id}`)
+        console.log(e.target.parentElement)
+      //  localStorage.removeItem(id)
         var prnt=e.target.parentElement;
-        odelete.removeChild(prnt)
+       odelete.removeChild(prnt)
 
         ////stuck here
      }
