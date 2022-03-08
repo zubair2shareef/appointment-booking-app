@@ -1,5 +1,8 @@
 var form=document.querySelector('.form')
 
+
+url="https://crudcrud.com/api/81090975ce674072b2e0f070b8fd85a5"
+
 console.log(form)
 
 form.addEventListener('submit', (e)=>{
@@ -14,7 +17,7 @@ form.addEventListener('submit', (e)=>{
 
     };
     console.log(userDetails);
-    axios.post("https://crudcrud.com/api/ec1549399c53408885aafd820c6a3f10/appoitment",userDetails)
+    axios.post(`${url}/appoitment`,userDetails)
     .then(res=>{
         console.log(res)
         showUserOnScreen(res.data)
@@ -48,7 +51,7 @@ l.forEach((ee)=>{
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    axios.get("https://crudcrud.com/api/ec1549399c53408885aafd820c6a3f10/appoitment")
+    axios.get(`${url}/appoitment`)
     .then(res=>{
         console.log(res.data)
         for(var i=0;i<res.data.length;i++){
@@ -84,7 +87,7 @@ function ondeleteAndEdit(e){
     e.preventDefault();
     if(e.target.classList.contains('delete')){
         id=e.target.parentElement.getAttribute("value")
-        axios.delete(`https://crudcrud.com/api/ec1549399c53408885aafd820c6a3f10/appoitment/${id}`)
+        axios.delete(`${url}/appoitment/${id}`)
         console.log(e.target.parentElement)
       //  localStorage.removeItem(id)
         var prnt=e.target.parentElement;
@@ -97,14 +100,17 @@ function ondeleteAndEdit(e){
      //for edit 
      else if(e.target.classList.contains('edit')){
         id=e.target.parentElement.getAttribute("value")
-        const data=JSON.parse(localStorage.getItem(id));
+        axios.get(`${url}/appoitment/${id}`).then(res=>{
+            data=res.data
+            
+            form.children[1].value=data.userName
+            form.children[3].value=data.userEmail
+            form.children[5].value=data.userPhoneno
+            form.children[7].value=data.userDateTime
+            axios.delete(`${url}/appoitment/${id}`)
+        })
         
-        form.children[1].value=data.userName
-        form.children[3].value=data.userEmail
-        form.children[5].value=data.userPhoneno
-        form.children[7].value=data.userDateTime
 
-      
         var prnt=e.target.parentElement;
         odelete.removeChild(prnt)
 
