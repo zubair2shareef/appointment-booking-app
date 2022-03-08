@@ -14,9 +14,17 @@ form.addEventListener('submit', (e)=>{
 
     };
     console.log(userDetails);
-    localStorage.setItem(e.target.email.value,JSON.stringify(userDetails));
+    axios.post("https://crudcrud.com/api/ec1549399c53408885aafd820c6a3f10/appoitment",userDetails)
+    .then(res=>{
+        console.log(res)
+        showUserOnScreen(res.data)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+    // localStorage.setItem(e.target.email.value,JSON.stringify(userDetails));
 
-    showUserOnScreen(userDetails);
+    // showUserOnScreen(userDetails);
 
     
   
@@ -33,7 +41,10 @@ function showUserOnScreen(obj){
   
     parent.innerHTML=parent.innerHTML+li
 }
-
+l=['dsfsd','fsdf','sfsd']
+l.forEach((ee)=>{
+    console.log(ee);
+})
 
 document.addEventListener('DOMContentLoaded', function () {
     let data=localStorage
